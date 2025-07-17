@@ -121,7 +121,7 @@ function App() {
               textAlign="center"
               pr={10}
               sx={{
-                textShadow: "0px 100px 100px rgba(0, 0, 0, 0.99)",
+                textShadow: "0px 10px 20px rgba(0, 0, 0, 0.25)",
               }}
             >
               You didn't even think – we've already got the solution.
@@ -133,7 +133,7 @@ function App() {
         </Stack>
       </Box>
 
-      <Box id="about" sx={{ height: "100vh", p: 10 }}>
+      <Box id="about" sx={{ height: "100vh", p: 10, mt: 5 }}>
         <Typography variant="h3">About us</Typography>
         <Typography mt={2}>Quem somos...</Typography>
       </Box>
