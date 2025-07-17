@@ -1,14 +1,14 @@
 import { AppBar, Box, CardMedia, Grid, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import alyssonSignature from "./assets/alyssu-signature.png";
+import alyssonPhoto from "./assets/alyssu.jpeg";
 import logo from "./assets/DoneThink.svg";
+import maxwellPhoto from "./assets/max_photo_01.jpeg";
+import maxwellSignature from "./assets/signature.png";
 import video from "./assets/videos/233043.mp4";
 import Wave from "./components/Wave";
-import maxwellPhoto from "./assets/max_photo_01.jpeg";
-import alyssonPhoto from "./assets/alyssu.jpeg";
-import alyssonSignature from "./assets/alyssu-signature.png";
-import maxwellSignature from "./assets/signature.png";
-import WaveAboutTop from "./components/WaveAboutTop";
 import WaveAboutBot from "./components/WaveAboutBot";
+import WaveAboutTop from "./components/WaveAboutTop";
 
 const sections = [
   { label: "About Us", id: "about" },
@@ -324,11 +324,10 @@ function App() {
                 image={alyssonSignature}
                 alt="Alysson Sene"
                 sx={{
-                  height: 180,
-                  width: 300,
+                  width: 200,
                   position: "absolute",
-                  bottom: 35,
-                  left: 150,
+                  bottom: 65,
+                  left: 210,
                   zIndex: 10,
                 }}
               />
