@@ -280,7 +280,7 @@ function App() {
               >
                 Maxwell Siqueira
               </Typography>
-              <Typography fontSize={14} alignSelf="center" ml={2} color="#000">
+              <Typography fontSize={14} alignSelf="center" color="#000">
                 Co-funder
               </Typography>
             </Stack>
@@ -324,7 +324,7 @@ function App() {
                   height: 180,
                   width: 300,
                   position: "absolute",
-                  bottom: 30,
+                  bottom: 35,
                   left: 150,
                   zIndex: 10,
                 }}
@@ -356,7 +356,7 @@ function App() {
               >
                 Alysson Sene
               </Typography>
-              <Typography fontSize={14} alignSelf="center" ml={2} color="#000">
+              <Typography fontSize={14} alignSelf="center" color="#000">
                 Co-funder
               </Typography>
             </Stack>
