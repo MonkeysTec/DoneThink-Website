@@ -1,14 +1,87 @@
-import { AppBar, Box, CardMedia, Grid, Stack, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Card,
+  CardMedia,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import alyssonSignature from "./assets/alyssu-signature.png";
 import alyssonPhoto from "./assets/alyssu.jpeg";
-import logo from "./assets/DoneThink.svg";
+import logo from "./assets/svgs/DoneThink.svg";
 import maxwellPhoto from "./assets/max_photo_01.jpeg";
 import maxwellSignature from "./assets/signature.png";
 import video from "./assets/videos/233043.mp4";
 import Wave from "./components/Wave";
 import WaveAboutBot from "./components/WaveAboutBot";
 import WaveAboutTop from "./components/WaveAboutTop";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import "swiper/css";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import "swiper/css/autoplay";
+
+import amold from "./assets/amold.jpg";
+import bblend from "./assets/bblend.png";
+import dottas from "./assets/dottas.png";
+import goAhead from "./assets/go-ahead.jpg";
+import idea from "./assets/idea.jpg";
+import ivy from "./assets/ivy.png";
+import lanlink from "./assets/lanlink.jpg";
+import mobiPlus from "./assets/mobi-plus.webp";
+import murad from "./assets/murad.png";
+import novaFutura from "./assets/nova-futura.png";
+import pdsolucoes from "./assets/pdsolucoes.jpg";
+import powerGo from "./assets/power-go.png";
+import prime from "./assets/prime.jpg";
+import salesSense from "./assets/sales-sense.jpg";
+import sbGroup from "./assets/sb-group.png";
+import sbLabs from "./assets/sb-labs.svg";
+import semParar from "./assets/sem-parar.png";
+import siglo from "./assets/siglo.png";
+import tazzij from "./assets/tazzi.jpg";
+import topsystem from "./assets/topsystem.jpeg";
+import traco from "./assets/traco.svg";
+import whirlpool from "./assets/whirlpool.png";
+import yep from "./assets/yep.jpg";
+import yogha from "./assets/yogha.jpg";
+import WaveClientsBot from "./components/WaveClientsBot";
+import WaveClientsTop from "./components/WaveClientsTop";
+
+const logos = [
+  amold,
+  bblend,
+  dottas,
+  goAhead,
+  idea,
+  ivy,
+  lanlink,
+  mobiPlus,
+  murad,
+  novaFutura,
+  pdsolucoes,
+  powerGo,
+  prime,
+  salesSense,
+  sbGroup,
+  sbLabs,
+  semParar,
+  siglo,
+  tazzij,
+  topsystem,
+  traco,
+  whirlpool,
+  yep,
+  yogha,
+];
 
 const sections = [
   { label: "About Us", id: "about" },
@@ -20,6 +93,10 @@ const sections = [
 function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const half = Math.ceil(logos.length / 2);
+  const firstHalf = logos.slice(0, half);
+  const secondHalf = logos.slice(half);
 
   const handleScrollTo = (id: string) => {
     const section = document.getElementById(id);
@@ -388,14 +465,11 @@ function App() {
           <Typography variant="h3">What we do</Typography>
         </Box>
 
-        {/* Wave 100% largura */}
         <Box sx={{ width: "100%", minHeight: "100vh", position: "relative" }}>
-          {/* Wave Top */}
           <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
             <WaveAboutBot />
           </Box>
 
-          {/* Texto */}
           <Stack
             justifyContent="center"
             alignItems="center"
@@ -403,7 +477,7 @@ function App() {
               px: 2,
               py: 10,
               mx: "auto",
-              backgroundColor: "#34a48a",
+              backgroundImage: "linear-gradient(to right, #078c66, #33fca7)",
             }}
           >
             <Stack maxWidth={1280}>
@@ -421,9 +495,9 @@ function App() {
                 the lifecycle of web, mobile, and API-based applications. Our
                 expert team includes front-end and back-end developers, mobile
                 engineers, product managers, product designers, UI/UX
-                specialists, Scrum masters, DevOps engineers, data analysts, and
+                specialists, scrum masters, devops engineers, data analysts, and
                 tech leads — all working together to deliver tailored digital
-                solutions. We take the time to truly understand our clients'
+                solutions. We take the time to truly understand our clients
                 challenges, transforming them into practical, fast, and
                 effective results. With a flexible and collaborative approach,
                 clients can actively shape the development focus each week —
@@ -435,21 +509,279 @@ function App() {
             </Stack>
           </Stack>
 
-          {/* Wave Bottom */}
           <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
             <WaveAboutTop />
           </Box>
         </Box>
       </Box>
 
-      <Box id="clients" sx={{ height: "100vh", width: "100%", mt: 5, pt: 15 }}>
-        <Typography variant="h3">Clients</Typography>
-        <Typography mt={2}>Nossos clientes incríveis...</Typography>
+      <Box
+        id="clients"
+        sx={{
+          width: "100%",
+          mt: 5,
+          pt: 15,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: 1280,
+            mx: "auto",
+            px: 4,
+            mb: 5,
+          }}
+        >
+          <Typography variant="h3">Clients</Typography>
+        </Box>
+
+        <Box sx={{ width: "100%", minHeight: "100vh", position: "relative" }}>
+          <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
+            <WaveClientsBot />
+          </Box>
+
+          <Stack
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              px: 2,
+              py: 10,
+              mx: "auto",
+              backgroundImage: "linear-gradient(to right, #33fca7, #078c66)",
+            }}
+          >
+            <Box sx={{ maxWidth: 1280, mx: "auto", px: 4 }}>
+              <Swiper
+                modules={[Autoplay]}
+                spaceBetween={16}
+                slidesPerView={5}
+                loop
+                speed={2000}
+                autoplay={{
+                  delay: 0,
+                  disableOnInteraction: false,
+                }}
+              >
+                {firstHalf.map((logo, index) => (
+                  <SwiperSlide key={index}>
+                    <Card
+                      sx={{
+                        height: 150,
+                        width: 150,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        borderRadius: 8,
+                      }}
+                    >
+                      <CardMedia
+                        component="img"
+                        image={logo}
+                        alt={`logo-${index}`}
+                        sx={{
+                          maxHeight: 100,
+                          maxWidth: "100%",
+                          objectFit: "contain",
+                          backgroundColor: "#fff",
+                        }}
+                      />
+                    </Card>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              <Swiper
+                modules={[Autoplay]}
+                spaceBetween={16}
+                slidesPerView={5}
+                loop
+                speed={2000}
+                autoplay={{
+                  delay: 0,
+                  disableOnInteraction: false,
+                  reverseDirection: true,
+                }}
+                style={{ marginTop: 16 }}
+              >
+                {secondHalf.map((logo, index) => (
+                  <SwiperSlide key={index}>
+                    <Card
+                      sx={{
+                        height: 150,
+                        width: 150,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        borderRadius: 8,
+                      }}
+                    >
+                      <CardMedia
+                        component="img"
+                        image={logo}
+                        alt={`logo-${index}`}
+                        sx={{
+                          maxHeight: 100,
+                          maxWidth: "100%",
+                          objectFit: "contain",
+                          backgroundColor: "#fff",
+                        }}
+                      />
+                    </Card>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Box>
+          </Stack>
+
+          <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
+            <WaveClientsTop />
+          </Box>
+        </Box>
       </Box>
 
-      <Box id="contact" sx={{ height: "100vh", width: "100%", mt: 5, pt: 15 }}>
-        <Typography variant="h3">Contact Us</Typography>
-        <Typography mt={2}>Entre em contato conosco...</Typography>
+      <Box
+        id="contact"
+        sx={{
+          height: "100vh",
+          width: "100%",
+          mt: 5,
+          pt: 15,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: 1280,
+            mx: "auto",
+            px: 4,
+          }}
+        >
+          <Typography variant="h3">Contact us</Typography>
+
+          <Stack
+            justifyContent="center"
+            alignItems="center"
+            mt={15}
+            gap={4}
+            height={700}
+            width="100%"
+            borderRadius={4}
+            sx={{
+              backgroundColor: "#33fca7",
+              position: "relative",
+            }}
+          >
+            <Stack
+              justifyContent="center"
+              alignItems="center"
+              gap={4}
+              height={700}
+              width="100%"
+              borderRadius={4}
+              sx={{
+                backgroundColor: "#fff",
+                position: "absolute",
+                top: 25,
+                left: 25,
+                px: 4,
+                py: 6,
+                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.05)",
+              }}
+            >
+              <Typography variant="h5" fontWeight={600} color="#000">
+                Contact Us
+              </Typography>
+
+              <TextField
+                fullWidth
+                label="Full Name"
+                variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#1fb98a",
+                    },
+                  },
+                  "& label.Mui-focused": {
+                    color: "#1fb98a",
+                  },
+                }}
+              />
+
+              <TextField
+                fullWidth
+                label="Email Address"
+                variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#1fb98a",
+                    },
+                  },
+                  "& label.Mui-focused": {
+                    color: "#1fb98a",
+                  },
+                }}
+              />
+
+              <TextField
+                fullWidth
+                label="Subject"
+                variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#1fb98a",
+                    },
+                  },
+                  "& label.Mui-focused": {
+                    color: "#1fb98a",
+                  },
+                }}
+              />
+
+              <TextField
+                fullWidth
+                label="Message"
+                variant="outlined"
+                multiline
+                rows={4}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#1fb98a",
+                    },
+                  },
+                  "& label.Mui-focused": {
+                    color: "#1fb98a",
+                  },
+                }}
+              />
+
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#1fb98a",
+                  borderColor: "#1fb98a",
+                  color: "#fff",
+                  fontWeight: 600,
+                  px: 4,
+                  boxShadow: "none",
+                  "&:hover": {
+                    backgroundColor: "#056f52",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Send Message
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
       </Box>
     </Box>
   );
