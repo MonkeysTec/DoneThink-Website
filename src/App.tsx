@@ -55,6 +55,7 @@ import yep from "./assets/yep.jpg";
 import yogha from "./assets/yogha.jpg";
 import WaveClientsBot from "./components/WaveClientsBot";
 import WaveClientsTop from "./components/WaveClientsTop";
+import Logo from "./components/Logo";
 
 const logos = [
   amold,
@@ -93,6 +94,16 @@ const sections = [
 function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const half = Math.ceil(logos.length / 2);
   const firstHalf = logos.slice(0, half);
@@ -174,615 +185,655 @@ function App() {
         </Box>
       </AppBar>
 
-      <Box
-        id="home"
-        sx={{
-          height: "100vh",
-          width: "100%",
-          position: "relative",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-      >
-        <Grid
-          container
-          spacing={2}
-          sx={{ maxWidth: 1280, mx: "auto", px: 5 }}
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Grid
-            size={6}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                width: "200%",
-                objectFit: "contain",
-              }}
-            >
-              <source src={video} type="video/mp4" />
-            </video>
-          </Grid>
-
-          <Grid
-            size={6}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Typography
-              variant="h4"
-              textAlign="center"
-              sx={{
-                textShadow: "0px 10px 20px rgba(0, 0, 0, 0.25)",
-              }}
-            >
-              You didn't even think – we've already got the solution.
-            </Typography>
-          </Grid>
-        </Grid>
-
+      {isLoading ? (
         <Box
           sx={{
             position: "absolute",
-            bottom: 0,
+            top: 80,
             left: 0,
             right: 0,
-            width: "100vw",
-            overflow: "hidden",
-            lineHeight: 0,
+            zIndex: 1200,
+            height: "calc(100vh - 80px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#fff",
+            animation: "fadeIn 1s ease-in-out",
+            "@keyframes fadeIn": {
+              "0%": { opacity: 0, transform: "scale(0.95)" },
+              "100%": { opacity: 1, transform: "scale(1)" },
+            },
           }}
         >
-          <Wave />
+          <Logo />
         </Box>
-      </Box>
-
-      <Box
-        sx={{
-          width: "100%",
-          height: "300px",
-          background: `linear-gradient(
-      to bottom,
-      #33fca7 0%,
-      #5efcb7 25%,
-      #9efcd4 50%,
-      #ccfce9 75%,
-      #ffffff 100%
-    )`,
-        }}
-      />
-
-      <Box
-        id="about"
-        sx={{
-          height: "100vh",
-          width: "100%",
-          mt: 5,
-          pt: 15,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      ) : (
         <Box
           sx={{
-            width: "100%",
-            maxWidth: 1280,
-            mx: "auto",
-            px: 4,
+            opacity: isLoading ? 0 : 1,
+            transition: "opacity 0.3s ease-in-out",
           }}
         >
-          <Typography variant="h3">About us</Typography>
-
-          <Stack
-            flexDirection="row"
-            justifyContent="center"
-            alignItems="center"
-            mt={15}
-            gap={4}
-          >
-            <Stack
-              flex={1}
-              height={600}
-              borderRadius={2}
-              border="2px solid #9efcd4"
-              sx={{
-                backgroundColor: "#9efcd4",
-                overflow: "visible",
-                position: "relative",
-                px: 2,
-              }}
-              justifyContent="flex-start"
-              alignItems="center"
-            >
-              <CardMedia
-                component="img"
-                image={maxwellPhoto}
-                alt="Maxwell Siqueira"
-                sx={{
-                  height: 160,
-                  width: 160,
-                  borderRadius: "50%",
-                  position: "absolute",
-                  top: -80,
-                  left: 32,
-                  zIndex: 10,
-                  border: "2px solid #fff",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                }}
-              />
-
-              <CardMedia
-                component="img"
-                image={maxwellSignature}
-                alt="Maxwell Siqueira"
-                sx={{
-                  height: 80,
-                  width: 300,
-                  position: "absolute",
-                  bottom: 90,
-                  left: 150,
-                  zIndex: 10,
-                }}
-              />
-
-              <Typography textAlign="center" mt={13}>
-                A 34-year-old technology enthusiast and seasoned software
-                developer with over 14 years of experience in building digital
-                solutions across a wide range of platforms. Founder of Monkeys
-                Tecnologia in Brazil and currently leading doneThink, a
-                forward-thinking tech company based in Estonia. With deep
-                expertise in full-stack development and product design, the CEO
-                has also served as a tech lead and engineering manager,
-                successfully guiding cross-functional teams through complex
-                challenges. His background includes hands-on work with embedded
-                systems, mobile applications, and web platforms, always
-                combining technical excellence with a product-oriented mindset.
-                Driven by innovation and simplicity, he is committed to
-                transforming complex problems into elegant, scalable, and
-                impactful solutions.
-              </Typography>
-
-              <Typography
-                fontWeight={600}
-                fontSize={18}
-                alignSelf="center"
-                mt={15}
-                color="#000"
-              >
-                Maxwell Siqueira
-              </Typography>
-              <Typography fontSize={14} alignSelf="center" color="#000">
-                Co-funder
-              </Typography>
-            </Stack>
-
-            <Stack
-              flex={1}
-              height={600}
-              borderRadius={2}
-              border="2px solid #9efcd4"
-              sx={{
-                backgroundColor: "#9efcd4",
-                overflow: "visible",
-                position: "relative",
-                px: 2,
-              }}
-              justifyContent="flex-start"
-              alignItems="center"
-            >
-              <CardMedia
-                component="img"
-                image={alyssonPhoto}
-                alt="Alysson Sene"
-                sx={{
-                  height: 160,
-                  width: 160,
-                  borderRadius: "50%",
-                  position: "absolute",
-                  top: -80,
-                  left: 32,
-                  zIndex: 10,
-                  border: "2px solid #fff",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                }}
-              />
-
-              <CardMedia
-                component="img"
-                image={alyssonSignature}
-                alt="Alysson Sene"
-                sx={{
-                  width: 200,
-                  position: "absolute",
-                  bottom: 65,
-                  left: 210,
-                  zIndex: 10,
-                }}
-              />
-
-              <Typography textAlign="center" mt={13}>
-                A 34-year-old technology enthusiast and seasoned software
-                developer with over 14 years of experience in building digital
-                solutions across a wide range of platforms. Founder of Monkeys
-                Tecnologia in Brazil and currently leading doneThink, a
-                forward-thinking tech company based in Estonia. With deep
-                expertise in full-stack development and product design, the CEO
-                has also served as a tech lead and engineering manager,
-                successfully guiding cross-functional teams through complex
-                challenges. His background includes hands-on work with embedded
-                systems, mobile applications, and web platforms, always
-                combining technical excellence with a product-oriented mindset.
-                Driven by innovation and simplicity, he is committed to
-                transforming complex problems into elegant, scalable, and
-                impactful solutions.
-              </Typography>
-
-              <Typography
-                fontWeight={600}
-                fontSize={18}
-                alignSelf="center"
-                mt={15}
-                color="#000"
-              >
-                Alysson Sene
-              </Typography>
-              <Typography fontSize={14} alignSelf="center" color="#000">
-                Co-funder
-              </Typography>
-            </Stack>
-          </Stack>
-        </Box>
-      </Box>
-
-      <Box
-        id="services"
-        sx={{
-          width: "100%",
-          mt: 5,
-          pt: 15,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: 1280,
-            mx: "auto",
-            px: 4,
-            mb: 5,
-          }}
-        >
-          <Typography variant="h3">What we do</Typography>
-        </Box>
-
-        <Box sx={{ width: "100%", minHeight: "100vh", position: "relative" }}>
-          <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
-            <WaveAboutBot />
-          </Box>
-
-          <Stack
-            justifyContent="center"
-            alignItems="center"
+          <Box
+            id="home"
             sx={{
-              px: 2,
-              py: 10,
-              mx: "auto",
-              backgroundImage: "linear-gradient(to right, #078c66, #33fca7)",
-            }}
-          >
-            <Stack maxWidth={1280}>
-              <Typography
-                fontWeight={600}
-                fontSize={26}
-                textAlign="center"
-                letterSpacing={1.5}
-                color="#fff"
-                sx={{
-                  textShadow: "0px 20px 40px rgba(0, 0, 0, 0.25)",
-                }}
-              >
-                We are a software development company dedicated to simplifying
-                the lifecycle of web, mobile, and API-based applications. Our
-                expert team includes front-end and back-end developers, mobile
-                engineers, product managers, product designers, UI/UX
-                specialists, scrum masters, devops engineers, data analysts, and
-                tech leads — all working together to deliver tailored digital
-                solutions. We take the time to truly understand our clients
-                challenges, transforming them into practical, fast, and
-                effective results. With a flexible and collaborative approach,
-                clients can actively shape the development focus each week —
-                whether allocating 100% of the team to design one week, then
-                shifting to 70% backend and 30% frontend the next. This dynamic
-                model ensures transparency, adaptability, and full alignment
-                with each client’s evolving priorities.
-              </Typography>
-            </Stack>
-          </Stack>
-
-          <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
-            <WaveAboutTop />
-          </Box>
-        </Box>
-      </Box>
-
-      <Box
-        id="clients"
-        sx={{
-          width: "100%",
-          mt: 5,
-          pt: 15,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: 1280,
-            mx: "auto",
-            px: 4,
-            mb: 5,
-          }}
-        >
-          <Typography variant="h3">Clients</Typography>
-        </Box>
-
-        <Box sx={{ width: "100%", minHeight: "100vh", position: "relative" }}>
-          <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
-            <WaveClientsBot />
-          </Box>
-
-          <Stack
-            justifyContent="center"
-            alignItems="center"
-            sx={{
-              px: 2,
-              py: 10,
-              mx: "auto",
-              backgroundImage: "linear-gradient(to right, #33fca7, #078c66)",
-            }}
-          >
-            <Box sx={{ maxWidth: 1280, mx: "auto", px: 4 }}>
-              <Swiper
-                modules={[Autoplay]}
-                spaceBetween={16}
-                slidesPerView={5}
-                loop
-                speed={2000}
-                autoplay={{
-                  delay: 0,
-                  disableOnInteraction: false,
-                }}
-              >
-                {firstHalf.map((logo, index) => (
-                  <SwiperSlide key={index}>
-                    <Card
-                      sx={{
-                        height: 150,
-                        width: 150,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        borderRadius: 8,
-                      }}
-                    >
-                      <CardMedia
-                        component="img"
-                        image={logo}
-                        alt={`logo-${index}`}
-                        sx={{
-                          maxHeight: 100,
-                          maxWidth: "100%",
-                          objectFit: "contain",
-                          backgroundColor: "#fff",
-                        }}
-                      />
-                    </Card>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-
-              <Swiper
-                modules={[Autoplay]}
-                spaceBetween={16}
-                slidesPerView={5}
-                loop
-                speed={2000}
-                autoplay={{
-                  delay: 0,
-                  disableOnInteraction: false,
-                  reverseDirection: true,
-                }}
-                style={{ marginTop: 16 }}
-              >
-                {secondHalf.map((logo, index) => (
-                  <SwiperSlide key={index}>
-                    <Card
-                      sx={{
-                        height: 150,
-                        width: 150,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        borderRadius: 8,
-                      }}
-                    >
-                      <CardMedia
-                        component="img"
-                        image={logo}
-                        alt={`logo-${index}`}
-                        sx={{
-                          maxHeight: 100,
-                          maxWidth: "100%",
-                          objectFit: "contain",
-                          backgroundColor: "#fff",
-                        }}
-                      />
-                    </Card>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </Box>
-          </Stack>
-
-          <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
-            <WaveClientsTop />
-          </Box>
-        </Box>
-      </Box>
-
-      <Box
-        id="contact"
-        sx={{
-          height: "100vh",
-          width: "100%",
-          mt: 5,
-          pt: 15,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: 1280,
-            mx: "auto",
-            px: 4,
-          }}
-        >
-          <Typography variant="h3">Contact us</Typography>
-
-          <Stack
-            justifyContent="center"
-            alignItems="center"
-            mt={15}
-            gap={4}
-            height={700}
-            width="100%"
-            borderRadius={4}
-            sx={{
-              backgroundColor: "#33fca7",
+              height: "100vh",
+              width: "100%",
               position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              opacity: isLoading ? 0 : 1,
+              transition: "opacity 0.3s ease-in-out",
             }}
           >
-            <Stack
-              justifyContent="center"
+            <Grid
+              container
+              spacing={2}
+              sx={{ maxWidth: 1280, mx: "auto", px: 5 }}
               alignItems="center"
-              gap={4}
-              height={700}
-              width="100%"
-              borderRadius={4}
+              justifyContent="center"
+            >
+              <Grid
+                size={6}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{
+                    width: "200%",
+                    objectFit: "contain",
+                  }}
+                >
+                  <source src={video} type="video/mp4" />
+                </video>
+              </Grid>
+
+              <Grid
+                size={6}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Typography
+                  variant="h4"
+                  textAlign="center"
+                  sx={{
+                    textShadow: "0px 10px 20px rgba(0, 0, 0, 0.25)",
+                  }}
+                >
+                  You didn't even think – we've already got the solution.
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <Box
               sx={{
-                backgroundColor: "#fff",
                 position: "absolute",
-                top: 25,
-                left: 25,
-                px: 4,
-                py: 6,
-                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.05)",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                width: "100vw",
+                overflow: "hidden",
+                lineHeight: 0,
               }}
             >
-              <Typography variant="h5" fontWeight={600} color="#000">
-                Contact Us
-              </Typography>
+              <Wave />
+            </Box>
+          </Box>
 
-              <TextField
-                fullWidth
-                label="Full Name"
-                variant="outlined"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#1fb98a",
-                    },
-                  },
-                  "& label.Mui-focused": {
-                    color: "#1fb98a",
-                  },
-                }}
-              />
+          <Box
+            sx={{
+              width: "100%",
+              height: "300px",
+              background: `linear-gradient(
+            to bottom,
+            #33fca7 0%,
+            #5efcb7 25%,
+            #9efcd4 50%,
+            #ccfce9 75%,
+            #ffffff 100%
+          )`,
+            }}
+          />
 
-              <TextField
-                fullWidth
-                label="Email Address"
-                variant="outlined"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#1fb98a",
-                    },
-                  },
-                  "& label.Mui-focused": {
-                    color: "#1fb98a",
-                  },
-                }}
-              />
+          <Box
+            id="about"
+            sx={{
+              height: "100vh",
+              width: "100%",
+              mt: 5,
+              pt: 15,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                maxWidth: 1280,
+                mx: "auto",
+                px: 4,
+              }}
+            >
+              <Typography variant="h3">About us</Typography>
 
-              <TextField
-                fullWidth
-                label="Subject"
-                variant="outlined"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#1fb98a",
-                    },
-                  },
-                  "& label.Mui-focused": {
-                    color: "#1fb98a",
-                  },
-                }}
-              />
+              <Stack
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                mt={15}
+                gap={4}
+              >
+                <Stack
+                  flex={1}
+                  height={600}
+                  borderRadius={2}
+                  border="2px solid #9efcd4"
+                  sx={{
+                    backgroundColor: "#9efcd4",
+                    overflow: "visible",
+                    position: "relative",
+                    px: 2,
+                  }}
+                  justifyContent="flex-start"
+                  alignItems="center"
+                >
+                  <CardMedia
+                    component="img"
+                    image={maxwellPhoto}
+                    alt="Maxwell Siqueira"
+                    sx={{
+                      height: 160,
+                      width: 160,
+                      borderRadius: "50%",
+                      position: "absolute",
+                      top: -80,
+                      left: 32,
+                      zIndex: 10,
+                      border: "2px solid #fff",
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                    }}
+                  />
 
-              <TextField
-                fullWidth
-                label="Message"
-                variant="outlined"
-                multiline
-                rows={4}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#1fb98a",
-                    },
-                  },
-                  "& label.Mui-focused": {
-                    color: "#1fb98a",
-                  },
-                }}
-              />
+                  <CardMedia
+                    component="img"
+                    image={maxwellSignature}
+                    alt="Maxwell Siqueira"
+                    sx={{
+                      height: 80,
+                      width: 300,
+                      position: "absolute",
+                      bottom: 90,
+                      left: 150,
+                      zIndex: 10,
+                    }}
+                  />
 
-              <Button
-                variant="contained"
+                  <Typography textAlign="center" mt={13}>
+                    A 34-year-old technology enthusiast and seasoned software
+                    developer with over 14 years of experience in building
+                    digital solutions across a wide range of platforms. Founder
+                    of Monkeys Tecnologia in Brazil and currently leading
+                    doneThink, a forward-thinking tech company based in Estonia.
+                    With deep expertise in full-stack development and product
+                    design, the CEO has also served as a tech lead and
+                    engineering manager, successfully guiding cross-functional
+                    teams through complex challenges. His background includes
+                    hands-on work with embedded systems, mobile applications,
+                    and web platforms, always combining technical excellence
+                    with a product-oriented mindset. Driven by innovation and
+                    simplicity, he is committed to transforming complex problems
+                    into elegant, scalable, and impactful solutions.
+                  </Typography>
+
+                  <Typography
+                    fontWeight={600}
+                    fontSize={18}
+                    alignSelf="center"
+                    mt={15}
+                    color="#000"
+                  >
+                    Maxwell Siqueira
+                  </Typography>
+                  <Typography fontSize={14} alignSelf="center" color="#000">
+                    Co-funder
+                  </Typography>
+                </Stack>
+
+                <Stack
+                  flex={1}
+                  height={600}
+                  borderRadius={2}
+                  border="2px solid #9efcd4"
+                  sx={{
+                    backgroundColor: "#9efcd4",
+                    overflow: "visible",
+                    position: "relative",
+                    px: 2,
+                  }}
+                  justifyContent="flex-start"
+                  alignItems="center"
+                >
+                  <CardMedia
+                    component="img"
+                    image={alyssonPhoto}
+                    alt="Alysson Sene"
+                    sx={{
+                      height: 160,
+                      width: 160,
+                      borderRadius: "50%",
+                      position: "absolute",
+                      top: -80,
+                      left: 32,
+                      zIndex: 10,
+                      border: "2px solid #fff",
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                    }}
+                  />
+
+                  <CardMedia
+                    component="img"
+                    image={alyssonSignature}
+                    alt="Alysson Sene"
+                    sx={{
+                      width: 200,
+                      position: "absolute",
+                      bottom: 65,
+                      left: 210,
+                      zIndex: 10,
+                    }}
+                  />
+
+                  <Typography textAlign="center" mt={13}>
+                    A 34-year-old technology enthusiast and seasoned software
+                    developer with over 14 years of experience in building
+                    digital solutions across a wide range of platforms. Founder
+                    of Monkeys Tecnologia in Brazil and currently leading
+                    doneThink, a forward-thinking tech company based in Estonia.
+                    With deep expertise in full-stack development and product
+                    design, the CEO has also served as a tech lead and
+                    engineering manager, successfully guiding cross-functional
+                    teams through complex challenges. His background includes
+                    hands-on work with embedded systems, mobile applications,
+                    and web platforms, always combining technical excellence
+                    with a product-oriented mindset. Driven by innovation and
+                    simplicity, he is committed to transforming complex problems
+                    into elegant, scalable, and impactful solutions.
+                  </Typography>
+
+                  <Typography
+                    fontWeight={600}
+                    fontSize={18}
+                    alignSelf="center"
+                    mt={15}
+                    color="#000"
+                  >
+                    Alysson Sene
+                  </Typography>
+                  <Typography fontSize={14} alignSelf="center" color="#000">
+                    Co-funder
+                  </Typography>
+                </Stack>
+              </Stack>
+            </Box>
+          </Box>
+
+          <Box
+            id="services"
+            sx={{
+              width: "100%",
+              mt: 5,
+              pt: 15,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                maxWidth: 1280,
+                mx: "auto",
+                px: 4,
+                mb: 5,
+              }}
+            >
+              <Typography variant="h3">What we do</Typography>
+            </Box>
+
+            <Box
+              sx={{ width: "100%", minHeight: "100vh", position: "relative" }}
+            >
+              <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
+                <WaveAboutBot />
+              </Box>
+
+              <Stack
+                justifyContent="center"
+                alignItems="center"
                 sx={{
-                  backgroundColor: "#1fb98a",
-                  borderColor: "#1fb98a",
-                  color: "#fff",
-                  fontWeight: 600,
-                  px: 4,
-                  boxShadow: "none",
-                  "&:hover": {
-                    backgroundColor: "#056f52",
-                    boxShadow: "none",
-                  },
+                  px: 2,
+                  py: 10,
+                  mx: "auto",
+                  backgroundImage:
+                    "linear-gradient(to right, #078c66, #33fca7)",
                 }}
               >
-                Send Message
-              </Button>
-            </Stack>
-          </Stack>
+                <Stack maxWidth={1280}>
+                  <Typography
+                    fontWeight={600}
+                    fontSize={26}
+                    textAlign="center"
+                    letterSpacing={1.5}
+                    color="#fff"
+                    sx={{
+                      textShadow: "0px 20px 40px rgba(0, 0, 0, 0.25)",
+                    }}
+                  >
+                    We are a software development company dedicated to
+                    simplifying the lifecycle of web, mobile, and API-based
+                    applications. Our expert team includes front-end and
+                    back-end developers, mobile engineers, product managers,
+                    product designers, UI/UX specialists, scrum masters, devops
+                    engineers, data analysts, and tech leads — all working
+                    together to deliver tailored digital solutions. We take the
+                    time to truly understand our clients challenges,
+                    transforming them into practical, fast, and effective
+                    results. With a flexible and collaborative approach, clients
+                    can actively shape the development focus each week — whether
+                    allocating 100% of the team to design one week, then
+                    shifting to 70% backend and 30% frontend the next. This
+                    dynamic model ensures transparency, adaptability, and full
+                    alignment with each client’s evolving priorities.
+                  </Typography>
+                </Stack>
+              </Stack>
+
+              <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
+                <WaveAboutTop />
+              </Box>
+            </Box>
+          </Box>
+
+          <Box
+            id="clients"
+            sx={{
+              width: "100%",
+              mt: 5,
+              pt: 15,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                maxWidth: 1280,
+                mx: "auto",
+                px: 4,
+                mb: 5,
+              }}
+            >
+              <Typography variant="h3">Clients</Typography>
+            </Box>
+
+            <Box
+              sx={{ width: "100%", minHeight: "100vh", position: "relative" }}
+            >
+              <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
+                <WaveClientsBot />
+              </Box>
+
+              <Stack
+                justifyContent="center"
+                alignItems="center"
+                sx={{
+                  px: 2,
+                  py: 10,
+                  mx: "auto",
+                  backgroundImage:
+                    "linear-gradient(to right, #33fca7, #078c66)",
+                }}
+              >
+                <Box sx={{ maxWidth: 1280, mx: "auto", px: 4 }}>
+                  <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={16}
+                    slidesPerView={5}
+                    loop
+                    speed={2000}
+                    autoplay={{
+                      delay: 0,
+                      disableOnInteraction: false,
+                    }}
+                  >
+                    {firstHalf.map((logo, index) => (
+                      <SwiperSlide key={index}>
+                        <Card
+                          sx={{
+                            height: 150,
+                            width: 150,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: 8,
+                          }}
+                        >
+                          <CardMedia
+                            component="img"
+                            image={logo}
+                            alt={`logo-${index}`}
+                            sx={{
+                              maxHeight: 100,
+                              maxWidth: "100%",
+                              objectFit: "contain",
+                              backgroundColor: "#fff",
+                            }}
+                          />
+                        </Card>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+
+                  <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={16}
+                    slidesPerView={5}
+                    loop
+                    speed={2000}
+                    autoplay={{
+                      delay: 0,
+                      disableOnInteraction: false,
+                      reverseDirection: true,
+                    }}
+                    style={{ marginTop: 16 }}
+                  >
+                    {secondHalf.map((logo, index) => (
+                      <SwiperSlide key={index}>
+                        <Card
+                          sx={{
+                            height: 150,
+                            width: 150,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: 8,
+                          }}
+                        >
+                          <CardMedia
+                            component="img"
+                            image={logo}
+                            alt={`logo-${index}`}
+                            sx={{
+                              maxHeight: 100,
+                              maxWidth: "100%",
+                              objectFit: "contain",
+                              backgroundColor: "#fff",
+                            }}
+                          />
+                        </Card>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </Box>
+              </Stack>
+
+              <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
+                <WaveClientsTop />
+              </Box>
+            </Box>
+          </Box>
+
+          <Box
+            id="contact"
+            sx={{
+              height: "100vh",
+              width: "100%",
+              mt: 5,
+              pt: 15,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                maxWidth: 1280,
+                mx: "auto",
+                px: 4,
+              }}
+            >
+              <Typography variant="h3">Contact us</Typography>
+
+              <Stack
+                justifyContent="center"
+                alignItems="center"
+                mt={15}
+                gap={4}
+                height={700}
+                width="100%"
+                borderRadius={4}
+                sx={{
+                  backgroundColor: "#33fca7",
+                  position: "relative",
+                }}
+              >
+                <Stack
+                  justifyContent="center"
+                  alignItems="center"
+                  gap={4}
+                  height={700}
+                  width="100%"
+                  borderRadius={4}
+                  sx={{
+                    backgroundColor: "#fff",
+                    position: "absolute",
+                    top: 25,
+                    left: 25,
+                    px: 4,
+                    py: 6,
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.05)",
+                  }}
+                >
+                  <Typography variant="h5" fontWeight={600} color="#000">
+                    Contact Us
+                  </Typography>
+
+                  <TextField
+                    fullWidth
+                    label="Full Name"
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#1fb98a",
+                        },
+                      },
+                      "& label.Mui-focused": {
+                        color: "#1fb98a",
+                      },
+                    }}
+                  />
+
+                  <TextField
+                    fullWidth
+                    label="Email Address"
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#1fb98a",
+                        },
+                      },
+                      "& label.Mui-focused": {
+                        color: "#1fb98a",
+                      },
+                    }}
+                  />
+
+                  <TextField
+                    fullWidth
+                    label="Subject"
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#1fb98a",
+                        },
+                      },
+                      "& label.Mui-focused": {
+                        color: "#1fb98a",
+                      },
+                    }}
+                  />
+
+                  <TextField
+                    fullWidth
+                    label="Message"
+                    variant="outlined"
+                    multiline
+                    rows={4}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#1fb98a",
+                        },
+                      },
+                      "& label.Mui-focused": {
+                        color: "#1fb98a",
+                      },
+                    }}
+                  />
+
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#1fb98a",
+                      borderColor: "#1fb98a",
+                      color: "#fff",
+                      fontWeight: 600,
+                      px: 4,
+                      boxShadow: "none",
+                      "&:hover": {
+                        backgroundColor: "#056f52",
+                        boxShadow: "none",
+                      },
+                    }}
+                  >
+                    Send Message
+                  </Button>
+                </Stack>
+              </Stack>
+            </Box>
+          </Box>
         </Box>
-      </Box>
+      )}
     </Box>
   );
 }
