@@ -48,6 +48,7 @@ function App() {
       justifyContent="center"
       flexDirection="column"
       alignItems="center"
+      sx={{ width: "100%", overflowX: "hidden" }}
     >
       <AppBar
         position="fixed"
@@ -389,60 +390,56 @@ function App() {
         </Box>
 
         {/* Wave 100% largura */}
-        <Box
-          sx={{
-            width: "100vw",
-            overflow: "hidden",
-            lineHeight: 0,
-          }}
-        >
-          <WaveAboutBot />
-        </Box>
+        <Box sx={{ width: "100%", minHeight: "100vh", position: "relative" }}>
+          {/* Wave Top */}
+          <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
+            <WaveAboutBot />
+          </Box>
 
-        <Stack
-          height={500}
-          width="100%"
-          sx={{ backgroundColor: "#34a48a" }}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Stack sx={{ maxWidth: 1280, mx: "auto", px: 2 }}>
-            <Typography
-              fontWeight={600}
-              fontSize={26}
-              textAlign="center"
-              letterSpacing={1.5}
-              color="#fff"
-              sx={{
-                textShadow: "0px 20px 40px rgba(0, 0, 0, 0.25)",
-              }}
-            >
-              We are a software development company dedicated to simplifying the
-              lifecycle of web, mobile, and API-based applications. Our expert
-              team includes front-end and back-end developers, mobile engineers,
-              product managers, product designers, UI/UX specialists, Scrum
-              masters, DevOps engineers, data analysts, and tech leads — all
-              working together to deliver tailored digital solutions. We take
-              the time to truly understand our clients' challenges, transforming
-              them into practical, fast, and effective results. With a flexible
-              and collaborative approach, clients can actively shape the
-              development focus each week — whether allocating 100% of the team
-              to design one week, then shifting to 70% backend and 30% frontend
-              the next. This dynamic model ensures transparency, adaptability,
-              and full alignment with each client’s evolving priorities.
-            </Typography>
+          {/* Texto */}
+          <Stack
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              px: 2,
+              py: 10,
+              mx: "auto",
+              backgroundColor: "#34a48a",
+            }}
+          >
+            <Stack maxWidth={1280}>
+              <Typography
+                fontWeight={600}
+                fontSize={26}
+                textAlign="center"
+                letterSpacing={1.5}
+                color="#fff"
+                sx={{
+                  textShadow: "0px 20px 40px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                We are a software development company dedicated to simplifying
+                the lifecycle of web, mobile, and API-based applications. Our
+                expert team includes front-end and back-end developers, mobile
+                engineers, product managers, product designers, UI/UX
+                specialists, Scrum masters, DevOps engineers, data analysts, and
+                tech leads — all working together to deliver tailored digital
+                solutions. We take the time to truly understand our clients'
+                challenges, transforming them into practical, fast, and
+                effective results. With a flexible and collaborative approach,
+                clients can actively shape the development focus each week —
+                whether allocating 100% of the team to design one week, then
+                shifting to 70% backend and 30% frontend the next. This dynamic
+                model ensures transparency, adaptability, and full alignment
+                with each client’s evolving priorities.
+              </Typography>
+            </Stack>
           </Stack>
-        </Stack>
 
-        {/* Wave 100% largura */}
-        <Box
-          sx={{
-            width: "100vw",
-            overflow: "hidden",
-            lineHeight: 0,
-          }}
-        >
-          <WaveAboutTop />
+          {/* Wave Bottom */}
+          <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
+            <WaveAboutTop />
+          </Box>
         </Box>
       </Box>
 
