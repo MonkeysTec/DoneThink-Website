@@ -364,9 +364,32 @@ function App() {
         </Box>
       </Box>
 
-      <Box id="services" sx={{ height: "100vh", width: "100%", mt: 5, pt: 15 }}>
-        <Typography variant="h3">What We Do</Typography>
-        <Typography mt={2}>Descrição dos serviços...</Typography>
+      <Box
+        id="services"
+        sx={{
+          height: "100vh",
+          width: "100%",
+          mt: 5,
+          pt: 15,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: 1280,
+            mx: "auto",
+            px: 4,
+            mb: 5,
+          }}
+        >
+          <Typography variant="h3">What we do</Typography>
+        </Box>
+
+        <Stack height={500} sx={{ backgroundColor: "#34a48a" }}>
+          oi
+        </Stack>
       </Box>
 
       <Box id="clients" sx={{ height: "100vh", width: "100%", mt: 5, pt: 15 }}>
