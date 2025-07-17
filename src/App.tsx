@@ -7,6 +7,8 @@ import maxwellPhoto from "./assets/max_photo_01.jpeg";
 import alyssonPhoto from "./assets/alyssu.jpeg";
 import alyssonSignature from "./assets/alyssu-signature.png";
 import maxwellSignature from "./assets/signature.png";
+import WaveAboutTop from "./components/WaveAboutTop";
+import WaveAboutBot from "./components/WaveAboutBot";
 
 const sections = [
   { label: "About Us", id: "about" },
@@ -52,7 +54,7 @@ function App() {
         elevation={0}
         sx={{
           height: 80,
-          zIndex: 10,
+          zIndex: 1300,
           background: isScrolled
             ? "linear-gradient(to bottom, #ffffff 90%, transparent)"
             : "transparent",
@@ -367,7 +369,6 @@ function App() {
       <Box
         id="services"
         sx={{
-          height: "100vh",
           width: "100%",
           mt: 5,
           pt: 15,
@@ -387,9 +388,62 @@ function App() {
           <Typography variant="h3">What we do</Typography>
         </Box>
 
-        <Stack height={500} sx={{ backgroundColor: "#34a48a" }}>
-          oi
+        {/* Wave 100% largura */}
+        <Box
+          sx={{
+            width: "100vw",
+            overflow: "hidden",
+            lineHeight: 0,
+          }}
+        >
+          <WaveAboutBot />
+        </Box>
+
+        <Stack
+          height={500}
+          width="100%"
+          sx={{ backgroundColor: "#34a48a" }}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Stack sx={{ maxWidth: 1280, mx: "auto", px: 2 }}>
+            <Typography
+              fontWeight={600}
+              fontSize={26}
+              textAlign="center"
+              letterSpacing={1.5}
+              color="#fff"
+              sx={{
+                textShadow: "0px 20px 40px rgba(0, 0, 0, 0.25)",
+              }}
+            >
+              We are a software development company dedicated to simplifying the
+              lifecycle of web, mobile, and API-based applications. Our expert
+              team includes front-end and back-end developers, mobile engineers,
+              product managers, product designers, UI/UX specialists, Scrum
+              masters, DevOps engineers, data analysts, and tech leads — all
+              working together to deliver tailored digital solutions. We take
+              the time to truly understand our clients' challenges, transforming
+              them into practical, fast, and effective results. With a flexible
+              and collaborative approach, clients can actively shape the
+              development focus each week — whether allocating 100% of the team
+              to design one week, then shifting to 70% backend and 30% frontend
+              the next. This dynamic model ensures transparency, adaptability,
+              and full alignment with each client’s evolving priorities.
+            </Typography>
+          </Stack>
         </Stack>
+
+        {/* Wave 100% largura */}
+        <Box
+          sx={{
+            width: "100vw",
+            overflow: "hidden",
+            lineHeight: 0,
+          }}
+        >
+          <WaveAboutTop />
+        </Box>
       </Box>
 
       <Box id="clients" sx={{ height: "100vh", width: "100%", mt: 5, pt: 15 }}>
