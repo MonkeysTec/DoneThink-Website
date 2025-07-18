@@ -44,7 +44,7 @@ export default function Footer() {
 
             <IconButton
               component="a"
-              href="https://instagram.com/doneThink"
+              href="https://instagram.com/done_think"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
