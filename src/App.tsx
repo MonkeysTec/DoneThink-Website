@@ -9,19 +9,19 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import alyssonSignature from "./assets/alyssu-signature.png";
 import alyssonPhoto from "./assets/alyssu.jpeg";
-import logo from "./assets/svgs/DoneThink.svg";
 import maxwellPhoto from "./assets/max_photo_01.jpeg";
 import maxwellSignature from "./assets/signature.png";
+import logo from "./assets/svgs/DoneThink.svg";
 import video from "./assets/videos/233043.mp4";
 import Wave from "./components/Wave";
 import WaveAboutBot from "./components/WaveAboutBot";
 import WaveAboutTop from "./components/WaveAboutTop";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import { motion, AnimatePresence } from "framer-motion";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -54,9 +54,9 @@ import traco from "./assets/traco.svg";
 import whirlpool from "./assets/whirlpool.png";
 import yep from "./assets/yep.jpg";
 import yogha from "./assets/yogha.jpg";
+import Logo from "./components/Logo";
 import WaveClientsBot from "./components/WaveClientsBot";
 import WaveClientsTop from "./components/WaveClientsTop";
-import Logo from "./components/Logo";
 
 const logos = [
   amold,
@@ -460,28 +460,25 @@ function App() {
                     />
 
                     <Typography textAlign="center" mt={13}>
-                      A 34-year-old technology enthusiast and seasoned software
-                      developer with over 14 years of experience in building
-                      digital solutions across a wide range of platforms.
-                      Founder of Monkeys Tecnologia in Brazil and currently
-                      leading doneThink, a forward-thinking tech company based
-                      in Estonia. With deep expertise in full-stack development
-                      and product design, the CEO has also served as a tech lead
-                      and engineering manager, successfully guiding
-                      cross-functional teams through complex challenges. His
-                      background includes hands-on work with embedded systems,
-                      mobile applications, and web platforms, always combining
-                      technical excellence with a product-oriented mindset.
-                      Driven by innovation and simplicity, he is committed to
-                      transforming complex problems into elegant, scalable, and
-                      impactful solutions.
+                      Co-founder of doneThink and software developer with solid
+                      experience in creating digital solutions focused on
+                      enhancing people's experience. Since 2018, he has worked
+                      in the technology field, with a strong presence in agile,
+                      dynamic, and collaborative environments. At 30 years old,
+                      he combines attention to detail, aesthetic sense, and
+                      strategic vision with best development practices to
+                      deliver functional, scalable, and well-designed products.
+                      He is ambitious to grow toward technical leadership
+                      positions, contributing to the development of new talents
+                      and helping build scalable, elegant, and purposeful
+                      solutions.
                     </Typography>
 
                     <Typography
                       fontWeight={600}
                       fontSize={18}
                       alignSelf="center"
-                      mt={15}
+                      mt={24}
                       color="#000"
                     >
                       Alysson Sene
