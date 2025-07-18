@@ -54,6 +54,7 @@ import traco from "./assets/traco.svg";
 import whirlpool from "./assets/whirlpool.png";
 import yep from "./assets/yep.jpg";
 import yogha from "./assets/yogha.jpg";
+import Footer from "./components/Footer";
 import Logo from "./components/Logo";
 import WaveClientsBot from "./components/WaveClientsBot";
 import WaveClientsTop from "./components/WaveClientsTop";
@@ -514,7 +515,11 @@ function App() {
               </Box>
 
               <Box
-                sx={{ width: "100%", minHeight: "100vh", position: "relative" }}
+                sx={{
+                  width: "100%",
+                  minHeight: "100vh",
+                  position: "relative",
+                }}
               >
                 <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
                   <WaveAboutBot />
@@ -590,7 +595,11 @@ function App() {
               </Box>
 
               <Box
-                sx={{ width: "100%", minHeight: "100vh", position: "relative" }}
+                sx={{
+                  width: "100%",
+                  minHeight: "100vh",
+                  position: "relative",
+                }}
               >
                 <Box sx={{ width: "100vw", overflow: "hidden", lineHeight: 0 }}>
                   <WaveClientsBot />
@@ -837,6 +846,7 @@ function App() {
                   </Stack>
                 </Stack>
               </Box>
+              <Footer />
             </Box>
           </motion.div>
         )}
